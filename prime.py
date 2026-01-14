@@ -4,15 +4,16 @@ from math import isqrt as math_isqrt
 import functools
 import typing
 
-from error import NumNotIntError
+from error import NumValueError
 
-__all__ = ["is_prime", "not_prime", "list_is_prime"] 
+__all__ = ["is_prime", "not_prime", "list_is_prime", "list_not_prime"] 
 
-@functools.lru_cache(maxsize=None)
+@functools.lru_cache()
 def is_prime(num: int) -> bool: 
     """Determine whether the number is a prime number"""
     if type(num) == float:
-        raise NumNotIntError
+        raise NumValueError(error_codes="num_not_integer", 
+                             error_msg="The num var must a integer!")
     if num < 2:
         return False
     if num == 2:
@@ -41,6 +42,11 @@ def list_is_prime(num_list: typing.List[int]) -> list[bool]:
         return_list.append(n)
     return return_list
         
-# def list_not_prime(num_list: typing.List[int]) -> list[bool]:
-#     """"""
+def list_not_prime(num_list: typing.List[int]) -> list[bool]:
+    """Check if there are ``not`` prime numbers in a list and return a list of boolean values."""
+    return_list = list_is_prime(num_list)
+    for i in range(len(return_list)):
+        if isinstance(return_list[i], bool):
+            return_list[i] = not return_list[i]
+    return return_list
     
