@@ -37,10 +37,16 @@ def not_prime(num: int) -> bool:
     
 def list_is_prime(num_list: typing.List[int]) -> list[bool]:
     """Check if there are prime numbers in a list and return a list of boolean values."""
-    return_list = []
-    for n in num_list:
-        return_list.append(n)
-    return return_list
+    if not num_list:
+        return []
+    result = []
+    for num in num_list:
+        if not isinstance(num, int):
+            result.append(False)
+        else:
+            result.append(is_prime(num))
+    return result
+
         
 def list_not_prime(num_list: typing.List[int]) -> list[bool]:
     """Check if there are ``not`` prime numbers in a list and return a list of boolean values."""
