@@ -2,12 +2,7 @@
 
 __version__ = "0.0.1"
 
-from prime import (
-    is_prime,
-    not_prime,
-    list_is_prime,
-    list_not_prime
-)
+from prime import *
 import error
 
 __all__ = [
@@ -16,5 +11,7 @@ __all__ = [
     "is_prime", 
     "not_prime", 
     "list_is_prime", 
-    "list_not_prime"
+    "list_not_prime",
+    "Prime",
+    "NotPrime"
 ]
