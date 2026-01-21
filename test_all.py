@@ -8,12 +8,8 @@ import os
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from prime import (
-    is_prime,
-    list_is_prime,
-    not_prime,
-    list_not_prime
-)
+from prime import *
+
 
 def test_is_prime():  # 1 passed in 0.03s in 2026-1-16
     # Test the `is_prime` function
@@ -30,3 +26,9 @@ def test_list_is_prime():
     assert list_is_prime([]) == []
     assert list_is_prime([5, 6, 7]) == [True, False, True]
     assert list_is_prime([0, -1, 2]) == [False, False, True]
+
+
+def test_Prime(num) -> Prime:
+    return num
+
+print(test_Prime(2))

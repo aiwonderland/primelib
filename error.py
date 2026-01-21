@@ -10,7 +10,7 @@ __all__ = [
 class PrimelibException(Exception):
     """Common base class for all ``primelib`` exceptions."""
 
-    def __init__(self, error_codes: str, error_msg: str | None, error_code: int | None) -> None:
+    def __init__(self, error_codes: str, error_msg: str | None, error_code: int) -> None:
         self.error_codes = error_codes
         self.error_msg = error_msg
         self.error_code = error_code
@@ -37,6 +37,8 @@ class PrimelibException(Exception):
             self.main_msg = f"{self.error_codes} ({self.error_code}): {self.error_msg}"
         if format_msg == "ClearlyIndicated":
             self.main_msg = f"{self.error_time} happen error {self.error_codes}: {self.error_msg} error_code: {self.error_code}"
+        if format_msg == "_s":
+            self.main_msg = self.error_msg
 
 class NumValueError(PrimelibException):
     """raises when ``num`` value is not an integer."""

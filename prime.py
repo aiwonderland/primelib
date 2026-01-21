@@ -6,14 +6,20 @@ import typing
 
 from error import NumValueError
 
-__all__ = ["is_prime", "not_prime", "list_is_prime", "list_not_prime"] 
+__all__ = ["is_prime", 
+           "not_prime", 
+           "list_is_prime", 
+           "list_not_prime",
+           
+            "Prime",
+            "NotPrime"] 
 
 @functools.lru_cache()
 def is_prime(num: int) -> bool: 
     """Determine whether the number is a prime number"""
     if type(num) == float:
-        raise NumValueError(error_codes="num_not_integer", 
-                             error_msg="The num var must a integer!")
+        _Error = NumValueError(error_msg="The num var must a integer!").format_message("_s")
+        raise _Error
     if num < 2:
         return False
     if num == 2:
@@ -35,7 +41,7 @@ def not_prime(num: int) -> bool:
     else:
         return True
     
-def list_is_prime(num_list: typing.List[int]) -> list[bool]:
+def list_is_prime(num_list: list[int]) -> list[bool]:
     """Check if there are prime numbers in a list and return a list of boolean values."""
     if not num_list:
         return []
@@ -48,7 +54,7 @@ def list_is_prime(num_list: typing.List[int]) -> list[bool]:
     return result
 
         
-def list_not_prime(num_list: typing.List[int]) -> list[bool]:
+def list_not_prime(num_list: list[int]) -> list[bool]:
     """Check if there are ``not`` prime numbers in a list and return a list of boolean values."""
     return_list = list_is_prime(num_list)
     for i in range(len(return_list)):
@@ -56,3 +62,12 @@ def list_not_prime(num_list: typing.List[int]) -> list[bool]:
             return_list[i] = not return_list[i]
     return return_list
     
+
+Prime: typing.TypeAlias = int
+NotPrime: typing.TypeAlias = int
+
+def _is_prime(num: int) -> typing.TypeGuard[Prime]:
+    return is_prime(num)
+
+def _not_prime(num: int) -> typing.TypeGuard[Prime]:
+    return not_prime(num)
