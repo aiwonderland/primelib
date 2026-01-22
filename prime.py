@@ -14,12 +14,12 @@ __all__ = ["is_prime",
             "Prime",
             "NotPrime"] 
 
-@functools.lru_cache()
+
 def is_prime(num: int) -> bool: 
     """Determine whether the number is a prime number"""
-    if type(num) != int:
-        _Error = NumValueError("The num var must a integer!")
-        raise _Error
+    if not isinstance(num, int):
+        raise NumValueError("The num var must be an integer!")
+    
     if num < 2:
         return False
     if num == 2:

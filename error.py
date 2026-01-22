@@ -9,7 +9,8 @@ __all__ = [
 
 class PrimelibException(Exception):
     """Common base class for all ``primelib`` exceptions."""
-    pass
+    def __init__(self, message=""):
+        super().__init__(message)
 
 class NumValueError(PrimelibException):
     """raises when ``num`` value is not an integer."""
