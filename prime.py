@@ -4,7 +4,10 @@ from math import isqrt as math_isqrt
 import functools
 import typing
 
-from error import NumValueError
+from error import (
+    NumValueError,
+    PrimeInfiniteRangeError,
+    PrimeRangeError)
 
 __all__ = ["is_prime", 
            "not_prime", 
@@ -63,9 +66,12 @@ def list_not_prime(num_list: list[int]) -> list[bool]:
     return return_list
     
 
+
 def PrimeRange(start: int, end: int) -> typing.Generator[int, None, None]:
-    """Prime number range iterator: 
-    Generates prime numbers within [start, end] one by one."""
+    if not isinstance(start, int) or not isinstance(end, int):
+        raise PrimeRangeError("start and end must be integers")
+    if start > end:
+        raise PrimeRangeError("start cannot be greater than end")
     current = max(start, 2)
     
     while current <= end:
@@ -85,8 +91,8 @@ def PrimeRange(start: int, end: int) -> typing.Generator[int, None, None]:
 
 
 def PrimeInfiniteRange(start: int = 2) -> typing.Generator[int, None, None]:
-    """Infinite prime number iterator: 
-    Starts from the given start value and generates the next prime number continuously."""
+    if not isinstance(start, int):
+        raise PrimeInfiniteRangeError("start must be an integer")
     current = max(start, 2)
 
     while True:

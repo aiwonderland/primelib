@@ -4,7 +4,11 @@ import time
 
 __all__ = [
     "PrimelibException",
-    "NumValueError"
+    "NumValueError",
+    "PrimeRangeError",
+    "PrimeInfiniteRangeError"
+
+
 ]
 
 class PrimelibException(Exception):
@@ -14,4 +18,12 @@ class PrimelibException(Exception):
 
 class NumValueError(PrimelibException):
     """raises when ``num`` value is not an integer."""
+    pass
+    
+class PrimeRangeError(PrimelibException):
+    """Raises when `start`/`end` is not integer or `start` > `end`."""
+    pass
+
+class PrimeInfiniteRangeError(PrimelibException):
+    """Raises when `start` value is not an integer."""
     pass
