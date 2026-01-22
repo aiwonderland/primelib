@@ -17,8 +17,8 @@ __all__ = ["is_prime",
 @functools.lru_cache()
 def is_prime(num: int) -> bool: 
     """Determine whether the number is a prime number"""
-    if type(num) == float:
-        _Error = NumValueError(error_msg="The num var must a integer!").format_message("_s")
+    if type(num) != int:
+        _Error = NumValueError("The num var must a integer!")
         raise _Error
     if num < 2:
         return False
