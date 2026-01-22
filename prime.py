@@ -10,9 +10,8 @@ __all__ = ["is_prime",
            "not_prime", 
            "list_is_prime", 
            "list_not_prime",
-           
-            "Prime",
-            "NotPrime"] 
+           "PrimeRange"
+] 
 
 
 def is_prime(num: int) -> bool: 
@@ -63,11 +62,19 @@ def list_not_prime(num_list: list[int]) -> list[bool]:
     return return_list
     
 
-Prime: typing.TypeAlias = int
-NotPrime: typing.TypeAlias = int
-
-def _is_prime(num: int) -> typing.TypeGuard[Prime]:
-    return is_prime(num)
-
-def _not_prime(num: int) -> typing.TypeGuard[Prime]:
-    return not_prime(num)
+def PrimeRange(start: int, end: int) -> typing.Generator[int, None, None]:
+    """Prime number range iterator: Generates prime numbers within [start, end] one by one."""
+    current = max(start, 2)
+    
+    while current <= end:
+        if current == 2:
+            yield current
+        elif current % 2 != 0: 
+            is_p = True
+            for i in range(3, int(current**0.5) + 1, 2):
+                if current % i == 0:
+                    is_p = False
+                    break
+            if is_p:
+                yield current
+        current += 1

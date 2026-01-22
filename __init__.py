@@ -12,6 +12,5 @@ __all__ = [
     "not_prime", 
     "list_is_prime", 
     "list_not_prime",
-    "Prime",
-    "NotPrime"
+    "PrimeRange"
 ]
