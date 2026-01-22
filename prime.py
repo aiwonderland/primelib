@@ -10,7 +10,8 @@ __all__ = ["is_prime",
            "not_prime", 
            "list_is_prime", 
            "list_not_prime",
-           "PrimeRange"
+           "PrimeRange",
+           "PrimeInfiniteRange"
 ] 
 
 
@@ -63,7 +64,8 @@ def list_not_prime(num_list: list[int]) -> list[bool]:
     
 
 def PrimeRange(start: int, end: int) -> typing.Generator[int, None, None]:
-    """Prime number range iterator: Generates prime numbers within [start, end] one by one."""
+    """Prime number range iterator: 
+    Generates prime numbers within [start, end] one by one."""
     current = max(start, 2)
     
     while current <= end:
@@ -71,10 +73,33 @@ def PrimeRange(start: int, end: int) -> typing.Generator[int, None, None]:
             yield current
         elif current % 2 != 0: 
             is_p = True
+
             for i in range(3, int(current**0.5) + 1, 2):
                 if current % i == 0:
                     is_p = False
                     break
+
+            if is_p:
+                yield current
+        current += 1
+
+
+def PrimeInfiniteRange(start: int = 2) -> typing.Generator[int, None, None]:
+    """Infinite prime number iterator: 
+    Starts from the given start value and generates the next prime number continuously."""
+    current = max(start, 2)
+
+    while True:
+        if current == 2:
+            yield current
+        elif current % 2 != 0:
+            is_p = True
+
+            for i in range(3, int(current**0.5) + 1, 2):
+                if current % i == 0:
+                    is_p = False
+                    break
+
             if is_p:
                 yield current
         current += 1
