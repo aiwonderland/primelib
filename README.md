@@ -2,8 +2,10 @@ A library related to prime numbers, which provides a wealth of functions about p
 
 ```python
 >>> import primelib as pb
->>> is_prime(12)
+>>> pb.is_prime(12)
 False
->>> is_prime(1000000007)
+>>> pb.is_prime(1000000007)
+True
+>>> pb.not_prime(12344)
 True
 ```
