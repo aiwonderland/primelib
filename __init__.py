@@ -1,4 +1,6 @@
-"""A prime number - related library that offers a comprehensive set of functions for prime number operations."""
+"""A prime number - related library that offers a comprehensive set of functions for prime number operations.
+
+This project is licensed under the MIT License - see the LICENSE file for details."""
 
 __version__ = "0.0.1"
 
