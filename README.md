@@ -15,3 +15,5 @@ This class has a great many functions; for instance, it outputs numerous prime n
 [Official Wiki](https://github.com/aiwonderland/primelib/wiki)
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+Let us know if you have found any problem. 
