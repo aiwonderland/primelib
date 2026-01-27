@@ -5,6 +5,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 __version__ = "0.0.1"
 
 from prime import *
+from core._prime_range import *
 import error
 
 __all__ = [
@@ -14,6 +15,7 @@ __all__ = [
     "not_prime", 
     "list_is_prime", 
     "list_not_prime",
+
     "PrimeRange",
     "PrimeInfiniteRange"
 ]

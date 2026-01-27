@@ -1,23 +1,18 @@
 """Some methods related to prime number checking"""
 
 from math import isqrt as math_isqrt
-import functools
-import typing
+from functools import lru_cache
 
-from error import (
-    NumValueError,
-    PrimeInfiniteRangeError,
-    PrimeRangeError)
+from error import NumValueError
 
 __all__ = ["is_prime", 
            "not_prime", 
            "list_is_prime", 
-           "list_not_prime",
-           "PrimeRange",
-           "PrimeInfiniteRange"
+           "list_not_prime"
 ] 
 
 
+@lru_cache()
 def is_prime(num: int) -> bool: 
     """Determine whether the number is a prime number"""
     if not isinstance(num, int):
@@ -67,45 +62,3 @@ def list_not_prime(num_list: list[int]) -> list[bool]:
     
 
 
-def PrimeRange(start: int, end: int) -> typing.Generator[int, None, None]:
-    if not isinstance(start, int) or not isinstance(end, int):
-        raise PrimeRangeError("start and end must be integers")
-    if start > end:
-        raise PrimeRangeError("start cannot be greater than end")
-    current = max(start, 2)
-    
-    while current <= end:
-        if current == 2:
-            yield current
-        elif current % 2 != 0: 
-            is_p = True
-
-            for i in range(3, int(current**0.5) + 1, 2):
-                if current % i == 0:
-                    is_p = False
-                    break
-
-            if is_p:
-                yield current
-        current += 1
-
-
-def PrimeInfiniteRange(start: int = 2) -> typing.Generator[int, None, None]:
-    if not isinstance(start, int):
-        raise PrimeInfiniteRangeError("start must be an integer")
-    current = max(start, 2)
-
-    while True:
-        if current == 2:
-            yield current
-        elif current % 2 != 0:
-            is_p = True
-
-            for i in range(3, int(current**0.5) + 1, 2):
-                if current % i == 0:
-                    is_p = False
-                    break
-
-            if is_p:
-                yield current
-        current += 1
