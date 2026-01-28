@@ -1,6 +1,5 @@
 """Errors in primelib."""
 
-import time
 
 __all__ = [
     "PrimelibException",

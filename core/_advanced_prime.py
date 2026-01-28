@@ -17,7 +17,7 @@ def _sieve_of_eratosthenes(max_num: int) -> List[int]:
     return primes
 
 def _prime_factorization(n: int) -> Dict[int, int]:
-    """Prime Factorization: Decompose n into a product of prime numbers
+    """Private core: Prime Factorization: Decompose n into a product of prime numbers
       and return a dictionary in the format {prime number: exponent}"""
     factors = {}
     if n < 2:
@@ -40,7 +40,7 @@ def _prime_factorization(n: int) -> Dict[int, int]:
     return factors
 
 def _euler_phi(n: int) -> int:
-    """Calculate Euler's totient function `φ(n)`: 
+    """Private core: Calculate Euler's totient function `φ(n)`: 
     the number of integers from 1 to n that are coprime with n"""
     if n == 1:
         return 1  
@@ -56,7 +56,8 @@ def _euler_phi(n: int) -> int:
     return result
 
 def _is_prime_miller_rabin(n: int, k: int=10) -> bool:
-    """Miller-Rabin Primality Test: Quickly determine whether a large number is a prime number
+    """Private core: Miller-Rabin Primality Test: Quickly determine whether a large number is a prime number
+    
     :param n: Number to be judged
     :param k: Test times (more times = higher accuracy, default 10 for coin scene)
     :return: Whether it is a prime number

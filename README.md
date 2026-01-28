@@ -12,6 +12,8 @@ True
 
 This class has a great many functions; for instance, it outputs numerous prime numbers, and it is an iterator.
 
+This module also includes numerous advanced prime number operations, including the RSA encryption algorithm.
+
 [Official Wiki](https://github.com/aiwonderland/primelib/wiki)
 
 This project is licensed under the MIT License - see the LICENSE file for details.
